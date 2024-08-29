@@ -16,14 +16,14 @@ from hellaswag import render_example, iterate_examples
 
 """
 To run this code in terminal:
-/home/clement/anaconda3/envs/Pytorch_env_2/bin/python "/mnt/c/Clément PC_t/Code/Code/Python/PyTorch/ChatGPT/GPT-2/train_gpt2.py"
+/home/clement/anaconda3/envs/Pytorch_env_2/bin/python "/mnt/c/Clément PC_t/Code/Code/Python/PyTorch/ChatGPT/GPT-2/train_gpt2_ddp.py"
 
 To run this code using wsl terminal:
 goto /mnt/c/Clément PC_t/Code/Code/Python/PyTorch/ChatGPT/GPT-2
-python train_gpt2.py
+python train_gpt2_ddp.py
 
 To run this code using ddp in wsl terinal
-torchrun --standalone --nproc_per_node=1 train_gpt2.py
+torchrun --standalone --nproc_per_node=1 train_gpt2_ddp.py
 """
 
 
