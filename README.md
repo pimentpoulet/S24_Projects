@@ -2,10 +2,13 @@
 
 2024 summer projects of a Physics Engineering Student at Laval University, Quebec
 
-― Learn the basics of PyTorch and Deep Learning
+~ Learn the basics of PyTorch and Deep Learning
 
-― CNNs
+~ CNNs, WaveNets (briefly) and MLPs
 
-― WaveNets and MLP
-
-― Transformers i.e. GPT-2 -> 124M parameters
+~ Transformers i.e. GPT-2 -> 124M parameters
+    
+	~ Flash-Attention
+    ~ Distributed Data Parallel (DDP)
+    ~ torch.compile() with torch.triton in windows wsl
+    ~ FinewebEDU & HellaSwag Datasets from Huggingface
