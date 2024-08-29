@@ -9,5 +9,5 @@
 ~ Transformers i.e. GPT-2 -> 124M parameters
  - Flash-Attention
  - Distributed Data Parallel (DDP)
- - torch.compile() with torch.triton in windows wsl
+ - ``torch.compile()`` with ``torch.triton`` in windows wsl
  - FinewebEDU & HellaSwag Datasets from Huggingface
