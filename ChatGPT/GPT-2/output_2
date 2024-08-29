@@ -1,5 +1,5 @@
 """
-Second time running the code on Tiny Shakespeare dataset
+Second time running the code
 50 000 output tokens of GPT-2 version 1
 """
 

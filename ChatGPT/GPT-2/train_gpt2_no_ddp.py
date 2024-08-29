@@ -3,13 +3,13 @@ import torch.nn as nn
 from torch.nn import functional as F
 import tiktoken
 import math
-import sys
 import time
 import inspect
 import numpy as np
 import os
 
 from dataclasses import dataclass
+from hellaswag import render_example, iterate_examples
 
 """
 To run this code in terminal:
@@ -262,6 +262,15 @@ class DataLoaderLite:
         self.current_shard = 0
         self.tokens = load_tokens(self.shards[self.current_shard])
         self.current_position = 0
+        self.reset()
+
+    def reset(self):
+        """
+        reinitializes the state and current_shard at 0
+        """
+        self.current_shard = 0
+        self.tokens = load_tokens(self.shards[self.current_shard])
+        self.current_position = 0
 
     def next_batch(self):
 
@@ -280,11 +289,35 @@ class DataLoaderLite:
         return x, y
 
 
+def get_most_likely_row(tokens, mask, logits):
+    """
+    takes tokens, mask and logits and returns the index of the completion with the lowest loss
+    """
+    # evaluate the autoregressive loss at all positions
+    shift_logits = (logits[..., :-1, :]).contiguous()
+    shift_tokens = (tokens[..., 1:]).contiguous()
+    flat_shift_logits = shift_logits.view(-1, shift_logits.size(-1))
+    flat_shift_tokens = shift_tokens.view(-1)
+    shift_losses = F.cross_entropy(flat_shift_logits, flat_shift_tokens, reduction='none')
+    shift_losses = shift_losses.view(tokens.size(0), -1)
+    # now get the average loss just for the completion region (where mask == 1), in each row
+    shift_mask = (mask[..., 1:]).contiguous() # we must shift mask, so we start at the last prompt token
+    masked_shift_losses = shift_losses * shift_mask
+    # sum and divide by the number of 1s in the mask
+    sum_loss = masked_shift_losses.sum(dim=1)
+    avg_loss = sum_loss / shift_mask.sum(dim=1)
+    # now we have a loss for each of the 4 completions
+    # the one with the lowest loss should be the most likely
+    pred_norm = avg_loss.argmin().item()
+    return pred_norm
+
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
 torch.manual_seed(1337)
 if torch.cuda.is_available():
     torch.cuda.manual_seed(1337)
+
+enc = tiktoken.get_encoding("gpt2")
 
 total_batch_size = 524288    # 2^19 --> ~0.5M in number of tokens
 B = 8                                                     # micro batch size
@@ -299,12 +332,11 @@ val_loader = DataLoaderLite(B=B, T=T, split="val")
 
 torch.set_float32_matmul_precision("high")
 
-# initialize the model
-model = GPT(GPTConfig(vocab_size=50304))
+model = GPT(GPTConfig(vocab_size=50304))    # initialize the model
 model.to(device)
-model = torch.compile(model)
-
-# raw_model = model.module if ddp else model             # always contains the "raw" unwrapped model
+use_compile = False                         # torch.compile doesn't allow HellaSwag eval and generation
+if use_compile:
+    model = torch.compile(model)
 
 max_lr = 6e-4
 min_lr = max_lr * 0.1
@@ -321,13 +353,91 @@ def get_lr(it):
 
     return min_lr + coeff * (max_lr - min_lr)
 
-
-# optimizer = torch.optim.AdamW(model.parameters(), lr=max_lr, betas=(0.9, 0.95), eps=1e-8)
 optimizer = model.configure_optimizers(weight_decay=0.1, learning_rate=6e-4, device=device)
+
+log_dir = "log"
+os.makedirs(log_dir, exist_ok=True)
+log_file = os.path.join(log_dir, f"log.txt")    # log file for saving model checkpoints
+with open(log_file, "w") as f:
+    pass
 
 for step in range(max_steps):
 
     t0 = time.time()
+    last_step = (step == max_steps - 1)
+
+    if step % 250 == 0 or last_step:        # evaluate validation loss
+        model.eval()
+        val_loader.reset()
+        with torch.no_grad():
+            val_loss_accum = 0.0
+            val_loss_steps = 20
+            for _ in range(val_loss_steps):
+                x, y = val_loader.next_batch()
+                x, y = x.to(device), y.to(device)
+                with torch.autocast(device_type=device, dtype=torch.bfloat16):
+                    logits, loss = model(x, y)
+                loss = loss / val_loss_steps
+                val_loss_accum += loss.detach()
+        print(f"validation loss: {val_loss_accum.item():.4f}")
+        with open(log_file, "a") as f:
+            f.write(f"{step} val {val_loss_accum.item():.4f}\n")
+        if step > 0 and (step % 5000 == 0 or last_step):
+            checkpoint_path = os.path.join(log_dir, f"model_{step:05d}.pt")    # save model checkpoints
+            checkpoint = {
+                'model': model.state_dict(),
+                'config': model.config,
+                'step': step,
+                'val_loss': val_loss_accum.item()
+            }
+            torch.save(checkpoint, checkpoint_path)
+
+    if (step % 250 or last_step) and (not use_compile):          # evaluate hellaswag loss
+        num_correct_norm = 0
+        num_total = 0
+        for i, example in enumerate(iterate_examples("val")):
+            _, tokens, mask, label = render_example(example)
+            tokens = tokens.to(device)
+            mask = mask.to(device)
+
+            with torch.no_grad():
+                with torch.autocast(device_type=device, dtype=torch.bfloat16):
+                    logits, loss = model(tokens)
+                pred_norm = get_most_likely_row(tokens, mask, logits)
+            num_total += 1
+            num_correct_norm += int(pred_norm == label)
+        acc_norm = num_correct_norm / num_total
+
+        print(f"HellaSwag accuracy: {num_correct_norm}/{num_total}={acc_norm:.4f}")
+        with open(log_file, "a") as f:
+            f.write(f"{step} hella {acc_norm:.4f}\n")
+    
+    if ((step > 0 and step % 250 == 0) or last_step) and (not use_compile):    # evaluate generation
+        model.eval()
+        num_return_sequences = 4
+        max_length = 32
+        tokens = enc.encode("Hello, I'm a language model,")
+        tokens = torch.tensor(tokens, dtype=torch.long)
+        tokens = tokens.unsqueeze(0).repeat(num_return_sequences, 1)
+        xgen = tokens.to(device)
+        sample_rng = torch.Generator(device=device)
+        sample_rng.manual_seed(42)
+        while xgen.size(1) < max_length:
+            with torch.no_grad():
+                logits, loss = model(xgen)                                  # (B, T, vocab_size)
+                logits = logits[:, -1, :]                                   # (B, vocab_size)
+                probs = F.softmax(logits, dim=-1)
+                topk_probs, topk_indices = torch.topk(probs, 50, dim=-1)       # (B, 50) & (B, 50)
+                ix = torch.multinomial(topk_probs, 1, generator=sample_rng)    # (B, 1)
+                xcol = torch.gather(topk_indices, -1, ix)                      # (B, 1)
+                xgen = torch.cat((xgen, xcol), dim=1)                          # (B, T+1)
+
+        for i in range(num_return_sequences):
+            tokens = xgen[i, :max_length].tolist()
+            decoded = enc.decode(tokens)
+            print(f"sample {i}: {decoded}")           # print generated text
+
+    model.train()
     optimizer.zero_grad()
     loss_accum = 0.0
 
@@ -355,27 +465,5 @@ for step in range(max_steps):
     tokens_per_sec = tokens_processed / dt
 
     print(f"step {step:4d} | loss: {loss_accum.item():.6f} |  lr: {lr:.4e} | norm: {norm:.4f} | dt: {dt * 1000:.2f}ms | tok/sec: {tokens_per_sec:.2f}")
-
-sys.exit(0)
-
-
-num_return_sequences = 5
-max_length = 30
-
-# generate
-torch.manual_seed(42)
-torch.cuda.manual_seed(42)
-while x.size(1) < max_length:
-    with torch.no_grad():
-        logits = model(x)                                           # (B, T, vocab_size)
-        logits = logits[:, -1, :]                                   # (B, vocab_size)
-        probs = F.softmax(logits, dim=-1)
-        topk_probs, topk_indices = torch.topk(probs, 50, dim=-1)    # (B, 50) & (B, 50)
-        ix = torch.multinomial(topk_probs, 1)                       # (B, 1)
-        xcol = torch.gather(topk_indices, -1, ix)                   # (B, 1)
-        x = torch.cat((x, xcol), dim=1)                             # (B, T+1)
-
-for i in range(num_return_sequences):
-    tokens = x[i, :max_length].tolist()
-    decoded = enc.decode(tokens)
-    print(">", decoded)                    # print generated text
+    with open(log_file, "a") as f:
+        f.write(f"{step} train {loss.accum:.6}\n")
