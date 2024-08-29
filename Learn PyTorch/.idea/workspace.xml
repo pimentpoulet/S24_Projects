@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="6cff759b-8619-4568-863a-6775d8bc902d" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/00_pytorch_fundamentals.py" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2aOMKjwOpm16qHnFLguZqf2cGo2" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showScratchesAndConsoles" value="false" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.BlobModel_1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.CNN_EMNIST.executor&quot;: &quot;Run&quot;,
+    &quot;Python.CNN_MNIST.executor&quot;: &quot;Run&quot;,
+    &quot;Python.CNN_fft.executor&quot;: &quot;Run&quot;,
+    &quot;Python.CNN_fftE_1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.CNN_fft_f (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.CNN_fft_f.executor&quot;: &quot;Run&quot;,
+    &quot;Python.CNN_fft_f_testing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.CircleModel_1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.EMNIST class.executor&quot;: &quot;Run&quot;,
+    &quot;Python.EMNIST_class (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.EMNIST_class.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Fashion_MNIST.executor&quot;: &quot;Run&quot;,
+    &quot;Python.LinearRegressionModel_1.executor&quot;: &quot;Run&quot;,
+    &quot;Python.MNIST_class (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.Numeric Vision (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.Numeric_Vision.executor&quot;: &quot;Run&quot;,
+    &quot;Python.Video_Feed.executor&quot;: &quot;Run&quot;,
+    &quot;Python.chapter_01_Training &amp; Testing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.chapter_01_pytorch_workflow_fundamentals (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.chapter_1_1_pytorch_workflow_fundamentals (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.chapter_1_2_Training &amp; Testing (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.chapter_2_1_binary_classification.executor&quot;: &quot;Run&quot;,
+    &quot;Python.chapter_2_2_multiclass_classification.executor&quot;: &quot;Run&quot;,
+    &quot;Python.chapter_3_1_Torchvision (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.chapter_3_1_multiclass_classification.executor&quot;: &quot;Run&quot;,
+    &quot;Python.create_dataset (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.create_dataset.executor&quot;: &quot;Run&quot;,
+    &quot;Python.create_grid_dataset.executor&quot;: &quot;Run&quot;,
+    &quot;Python.custom_dataset.executor&quot;: &quot;Run&quot;,
+    &quot;Python.custom_dataset_1 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.custom_dataset_2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.fft_dataset (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.fft_dataset.executor&quot;: &quot;Run&quot;,
+    &quot;Python.plotInterferogramData (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.testing.executor&quot;: &quot;Run&quot;,
+    &quot;Python.tests.executor&quot;: &quot;Run&quot;,
+    &quot;Python.torchvision.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;ToolWindowRun.ShowToolbar&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Clément PC_t/Code/Code/Python/PyTorch/ChatGPT/GPT-2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Clément MSI\Code\Python\PyTorch\Learn PyTorch\TPOP - Projet 2" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Clément MSI\Code\Python\PyTorch\Learn PyTorch\TPOP - Projet 2\Dataset Creation" />
+      <recent name="C:\Clément MSI\Code\Python\PyTorch\Learn PyTorch\TPOP - Projet 2\CNNs" />
+      <recent name="C:\Clément MSI\Code\Python\PyTorch\Learn PyTorch\Chapter 3 - Computer Vision" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Python.CNN_MNIST">
+    <configuration name="CNN_MNIST" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyTorch" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/models" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/models/CNN_MNIST.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="CNN_fft_f (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyTorch" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TPOP - Projet 2/CNNs" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TPOP - Projet 2/CNNs/CNN_fft_f.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="CNN_fft_f_testing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyTorch" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TPOP - Projet 2/CNNs" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TPOP - Projet 2/CNNs/CNN_fft_f_testing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="create_grid_dataset" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyTorch" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TPOP - Projet 2/Dataset Creation" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TPOP - Projet 2/Dataset Creation/create_grid_dataset.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="main" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="PyTorch" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/main.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="testing" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="PyTorch" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/TPOP - Projet 2/Dataset Creation" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/TPOP - Projet 2/Dataset Creation/testing.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Python.CNN_MNIST" />
+      <item itemvalue="Python.CNN_fft_f (1)" />
+      <item itemvalue="Python.CNN_fft_f_testing" />
+      <item itemvalue="Python.create_grid_dataset" />
+      <item itemvalue="Python.main" />
+      <item itemvalue="Python.testing" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.CNN_MNIST" />
+        <item itemvalue="Python.CNN_fft_f_testing" />
+        <item itemvalue="Python.CNN_fft_f (1)" />
+        <item itemvalue="Python.create_grid_dataset" />
+        <item itemvalue="Python.testing" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-python-sdk-975db3bf15a3-31b6be0877a2-com.jetbrains.pycharm.community.sharedIndexes.bundled-PC-241.18034.82" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="6cff759b-8619-4568-863a-6775d8bc902d" name="Changes" comment="" />
+      <created>1704185109481</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1704185109481</updated>
+    </task>
+    <servers />
+  </component>
+</project>
