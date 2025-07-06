@@ -1,6 +1,5 @@
 import torch
 import torch.nn as nn
-from torch.nn import functional as F
 import tiktoken
 import math
 import time
@@ -8,6 +7,7 @@ import inspect
 import numpy as np
 import os
 
+from torch.nn import functional as F
 from dataclasses import dataclass
 from hellaswag import render_example, iterate_examples
 
@@ -19,7 +19,7 @@ To run this code using wsl terminal:
 goto /mnt/c/Clément PC_t/Code/Code/Python/PyTorch/ChatGPT/GPT-2
 python train_gpt2.py
 
-To run this code using ddp in wsl terinal
+To run this code using ddp in wsl terminal
 torchrun --standalone --nproc_per_node=1 train_gpt2.py
 """
 

@@ -138,7 +138,7 @@ num_merges = vocab_size - 256
 ids = list(tokens)
 ```
 
-This code merges the most occuring pairs successively into new tokens.
+This code merges the most occurring pairs successively into new tokens.
 
 ```python
 merges = {}    # (int, int) --> int
@@ -237,7 +237,7 @@ https://coderpad.io/blog/development/the-complete-guide-to-regular-expressions-r
 
 
 
-« tiktoken is a fast [BPE](https://en.wikipedia.org/wiki/Byte_pair_encoding) tokeniser for use with OpenAI's models. »
+« tiktoken is a fast [BPE](https://en.wikipedia.org/wiki/Byte_pair_encoding) tokenizer for use with OpenAI's models. »
 
 « SentencePiece is an unsupervised text tokenizer and detokenizer mainly for Neural Network-based text generation systems where the vocabulary size is predetermined prior to the neural model training. SentencePiece implements **subword units** (e.g., *byte-pair-encoding* (BPE) and **unigram language model** with the extension of direct training from raw sentences. SentencePiece allows us to make a purely end-to-end system that does not depend on language-specific pre/postprocessing. »
 
